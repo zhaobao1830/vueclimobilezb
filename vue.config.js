@@ -1,4 +1,6 @@
 const { defineConfig } = require('@vue/cli-service')
+const webpack = require('webpack')
+
 module.exports = defineConfig({
   transpileDependencies: true,
   // 公共路径(必须有的)
@@ -31,5 +33,16 @@ module.exports = defineConfig({
         secure: false // 接受 运行在 https 上的服务
       }
     }
+  },
+  chainWebpack(config) {
+    config.plugin('context')
+      .use(webpack.ContextReplacementPlugin,
+        [/moment[/\\]locale$/, /zh-cn/])
+
+    config.plugin('html')
+      .tap(args => {
+        args[0].title= 'vue移动端开源项目'
+        return args
+      })
   }
 })

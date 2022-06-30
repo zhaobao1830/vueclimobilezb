@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <van-button>点击</van-button>
+    我是首页
   </div>
 </template>
 
