@@ -1,6 +1,6 @@
 # vue-cli 移动端开源项目
 
-Vue v3.2.31、vue-cli v5.0.1
+Vue v3.2.31、vue-cli v5.0.1、vuex v4.0.2
 
 1、引入vant
 
