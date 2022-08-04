@@ -12,6 +12,8 @@ Vue v3.2.31、vue-cli v5.0.1、vuex v4.0.2
 
 （1）、npm i babel-plugin-import -D
 
+第一种方式：
+
 （2）、在.babelrc 或 babel.config.js 中添加配置：
 
 ```js
@@ -30,6 +32,8 @@ Vue v3.2.31、vue-cli v5.0.1、vuex v4.0.2
 ```
 
 (3)、main.js引入组件
+
+第二种方式：使用unplugin-vue-components插件引入组件
 
 2、打包的配置
 
