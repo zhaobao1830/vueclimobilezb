@@ -24,36 +24,36 @@
     name: 'md-ruler',
     emits: ['update:modelValue', 'change'],
     props: {
-      modelValue: {
+      modelValue: { // 双向绑定的值
         type: Number,
         default: 0
       },
-      scope: {
+      scope: { // 刻度尺范围
         type: Array,
         default: () => [0, 100]
       },
-      step: {
+      step: { // 刻度尺每一大格步数
         type: Number,
         default: 10
       },
-      unit: {
+      unit: { // 刻度尺每一小格步数
         type: Number,
         default: 1
       },
-      min: {
+      min: { // 最小可滑动位置
         type: Number,
         default: 0
       },
-      max: {
+      max: { // 最大可滑动位置
         type: Number,
         default: 100
       },
-      stepTextPosition: {
+      stepTextPosition: { // Step标志位置 可选'top', 'bottom'
         type: String,
         default: 'top',
-        validator: val => !!~['top', 'bottom'].indexOf(val)
+        validator: val => ['top', 'bottom'].includes(val)
       },
-      stepTextRender: {
+      stepTextRender: { // 自定义step文案 自定义函数应该返回字符串
         type: Function,
         default: noop
       }
