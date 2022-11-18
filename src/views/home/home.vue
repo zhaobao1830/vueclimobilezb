@@ -1,20 +1,30 @@
 <template>
   <div class="home">
     <van-button type="primary">我是首页按钮</van-button>
-    <div class="ruler-demo">
-      当前值：{{value}}
-      <ruler-component
-        v-model="value"
-        :scope="scope"
-        :step="10"
-        :unit="1"
-      ></ruler-component>
-    </div>
+    <van-form
+      ref="homeFormRef"
+      @submit="formSubmit"
+    >
+      <van-field
+        v-model="name"
+        name="name"
+        label="姓名"
+        :rules="[{required: true, message: '请填写姓名'}]"
+      />
+      <van-field
+        v-model="age"
+        name="age"
+        label="年龄"
+        :rules="[{required: true, message: '请填写年龄'}]"
+      />
+      <van-button round block type="primary" native-type="submit">
+        提交
+      </van-button>
+    </van-form>
   </div>
 </template>
 
 <script setup>
-  import RulerComponent from '@/components/base/Ruler/RulerComponent'
   import { useStore } from 'vuex'
   import { computed, ref } from 'vue'
 
@@ -23,8 +33,19 @@
 
   console.log(playlist)
 
-  const value = ref(10)
-  const scope = ref([0, 30])
+  const homeFormRef = ref(null)
+  const name = ref('')
+  const age = ref('')
+
+  function formSubmit() {
+    const ref = homeFormRef.value
+    ref.validate().then(() => {
+      console.log('校验成功')
+    })
+      .catch(() => {
+        console.log('校验失败')
+      })
+  }
 </script>
 
 <style scoped lang="scss">
