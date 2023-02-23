@@ -48,9 +48,15 @@ _axios.interceptors.request.use(async (config) => {
 })
 
 // 对axios的response配置
-_axios.interceptors.response.use((res) => {
+_axios.interceptors.response.use((response) => {
   cancel = null
-  return res.data
+  const res = response.data
+  if (res.code === 501) {
+    // 501是和后端商定的错误码
+    return Promise.reject(response)
+  } else {
+    return Promise.resolve(res)
+  }
 }, err => {
   cancel = null
   if (axios.isCancel(err)) {
